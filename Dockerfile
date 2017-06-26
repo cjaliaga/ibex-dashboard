@@ -1,25 +1,15 @@
-FROM node
+FROM node:6.11.0-alpine
 
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Bundle app source
-COPY . /usr/src/app
-
-# Workaround for https://github.com/npm/npm/issues/16892
-# Running npm install as root blows up in a  --userns-remap
-# environment.
-
-RUN chmod -R 777 /usr/src/app
-
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN cd /usr/src/app \
-&& npm install yarn -g \
-&& npm install
+RUN npm install yarn -g
+RUN npm install
 
-EXPOSE 4000
-ENV PORT 4000
+# Bundle app source
+COPY . /usr/src/app
 
 CMD [ "npm", "start" ]
