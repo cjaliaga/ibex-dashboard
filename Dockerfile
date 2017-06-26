@@ -4,6 +4,9 @@ FROM node
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+# Bundle app source
+COPY . /usr/src/app
+
 # Workaround for https://github.com/npm/npm/issues/16892
 # Running npm install as root blows up in a  --userns-remap
 # environment.
@@ -20,8 +23,7 @@ RUN cd /usr/src/app \
 
 USER root
 
-# Bundle app source
-COPY . /usr/src/app
+
 
 EXPOSE 4000
 ENV PORT 4000
