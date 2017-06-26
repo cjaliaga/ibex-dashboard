@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # Running npm install as root blows up in a  --userns-remap
 # environment.
 
-RUN chmod -R 777 /usr/src/app \
+RUN chmod -R 777 /usr/src/app
      
 USER node
 
