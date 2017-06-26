@@ -13,7 +13,7 @@ COPY package.json /usr/src/app/
 USER node
 
 # Install app dependencies
-RUN npm install yarn -g
+RUN npm install yarn
 RUN npm install
 
 USER root
