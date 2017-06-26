@@ -12,18 +12,12 @@ COPY . /usr/src/app
 # environment.
 
 RUN chmod -R 777 /usr/src/app
-     
-USER node
 
 # Install app dependencies
 COPY package.json /usr/src/app/
 RUN cd /usr/src/app \
-&& npm install yarn \
+&& npm install yarn -g \
 && npm install
-
-USER root
-
-
 
 EXPOSE 4000
 ENV PORT 4000
