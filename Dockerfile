@@ -8,11 +8,12 @@ WORKDIR /usr/src/app
 # Running npm install as root blows up in a  --userns-remap
 # environment.
 
-COPY package.json /usr/src/app/
-
+RUN chmod -R 777 /usr/src/app
+     
 USER node
 
 # Install app dependencies
+COPY package.json /usr/src/app/
 RUN npm install yarn
 RUN npm install
 
