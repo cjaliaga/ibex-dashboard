@@ -14,8 +14,9 @@ USER node
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install yarn
-RUN npm install
+RUN cd /usr/src/app \
+&& npm install yarn \
+&& npm install
 
 USER root
 
